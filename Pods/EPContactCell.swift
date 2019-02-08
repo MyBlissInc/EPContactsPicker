@@ -9,7 +9,7 @@
 import UIKit
 
 class EPContactCell: UITableViewCell {
-
+    
     @IBOutlet weak var contactTextLabel: UILabel!
     @IBOutlet weak var contactDetailTextLabel: UILabel!
     @IBOutlet weak var contactImageView: UIImageView!
@@ -22,11 +22,11 @@ class EPContactCell: UITableViewCell {
         
         super.awakeFromNib()
         // Initialization code
-        selectionStyle = UITableViewCellSelectionStyle.none
+        selectionStyle = UITableViewCell.SelectionStyle.none
         contactContainerView.layer.masksToBounds = true
         contactContainerView.layer.cornerRadius = contactContainerView.frame.size.width/2
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -37,7 +37,7 @@ class EPContactCell: UITableViewCell {
         let randomValue = (indexpath.row + indexpath.section) % colorArray.count
         contactInitialLabel.backgroundColor = colorArray[randomValue]
     }
- 
+    
     func updateContactsinUI(_ contact: EPContact, indexPath: IndexPath, subtitleType: SubtitleCellValue) {
         self.contact = contact
         //Update all UI in the cell here
@@ -73,7 +73,7 @@ class EPContactCell: UITableViewCell {
             }
         case SubtitleCellValue.email:
             let emailCount = contact.emails.count
-        
+            
             if emailCount == 1  {
                 self.contactDetailTextLabel.text = "\(contact.emails[0].email)"
             }
